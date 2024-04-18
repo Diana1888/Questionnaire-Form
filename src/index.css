@@ -70,10 +70,49 @@ hr{
   margin-top: 30px;
 }
 
-.steps{
+.steps-container{
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
+
 }
+
+.step{
+  width: 34px;
+  height: 34px;
+  background-color: #EFF0F6;
+  border-radius: 50%;
+  color: #6F6C90;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.active-step{
+  background-color: #4A3AFF;
+  color: #FFFFFF;
+}
+
+.step-line{
+  display: flex;
+  align-items: center;
+}
+
+.progress-line{
+  background-color: #eff0f6;
+  width: 98px;
+  margin: 0 18px;
+  height: 6px;
+  border-radius: 40px;
+}
+
+.active-progress-line{
+  background-color: #4A3AFF;
+  /* width: 49px;
+  margin: 0 18px;
+  height: 6px;
+  border-radius: 40px; */
+}
+
 
 input{
   border: none;
@@ -138,6 +177,7 @@ input:focus{
   padding: 32px 46px 80px;
   text-align: left;
   margin-bottom: 32px;
+  margin-top: 42px;
 }
 
 .form-steps{
