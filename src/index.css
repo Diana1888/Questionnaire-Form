@@ -97,7 +97,7 @@ hr{
   align-items: center;
 }
 
-.progress-line{
+/* .progress-line{
   background-color: #eff0f6;
   width: 98px;
   margin: 0 18px;
@@ -107,11 +107,30 @@ hr{
 
 .active-progress-line{
   background-color: #4A3AFF;
-  /* width: 49px;
-  margin: 0 18px;
+} */
+.progress-line-container {
+  position: relative;
+  width: 98px;
+  /* Adjust this value to match the width of your progress line */
   height: 6px;
-  border-radius: 40px; */
+  margin: 0 18px;
 }
+
+.progress-line {
+  background-color: #eff0f6;
+  height: 100%;
+  border-radius: 40px;
+}
+
+.active-progress-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #4a3aff;
+  height: 100%;
+  border-radius: 40px;
+}
+
 
 
 input{
@@ -306,7 +325,12 @@ input:focus{
 
 }
 
+
 .step-btns{
   display: flex;
   justify-content: space-between;
+}
+
+.hidden-btn{
+  display: none;
 }

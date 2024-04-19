@@ -9,7 +9,7 @@ import { useContext } from "react";
 import FormContext from "../context/FormContext";
 
 const Multiform = () => {
-  const { state, dispatch, nextStep, previousStep } = useContext(FormContext);
+  const { state, nextStep, previousStep } = useContext(FormContext);
   const { currentStep } = state;
 
   const handleNextClick = () => {
@@ -52,7 +52,10 @@ const Multiform = () => {
       </div>
       <div className="step-btns">
         {currentStep === 1 && (
+          <>
+          <Button className="hidden-btn" />
             <Button className='next-btn' onClick={handleNextClick} label="Next step" />
+            </>
           )}
           {(currentStep === 2 || currentStep === 3) && (
             <>
