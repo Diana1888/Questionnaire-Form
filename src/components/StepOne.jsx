@@ -5,9 +5,7 @@ import FormContext from '../context/FormContext';
 import content from '../content/content';
 
 const StepOne = () => {
-  const { state, handleInput} = useContext(FormContext);
-
-
+  const { state, handleInput } = useContext(FormContext);
 
   return (
     <div className="form-steps">
@@ -20,13 +18,15 @@ const StepOne = () => {
           <label key={data.name} className="input-form-title">
             {data.label}
 
-            <Input
-              name={data.name}
-              placeholder={data.placeholder}
-              value={state[data.name]}
-              onChange={handleInput}
-              image={data.icon}
-            />
+            <div className="input-form">
+              <Input
+                name={data.name}
+                placeholder={data.placeholder}
+                value={state[data.name]}
+                onChange={handleInput}
+              />
+              <img src={data.icon} alt={data.label} />
+            </div>
           </label>
         ))}
       </div>

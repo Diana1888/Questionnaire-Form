@@ -20,6 +20,10 @@ padding: 0;
   padding: 32px 99px;
 }
 
+.footer-input{
+  display: flex;
+}
+
 .logotype{
   display: flex;
   align-items: center;

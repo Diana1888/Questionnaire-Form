@@ -21,7 +21,6 @@ const RadioButton = ({ name, label, checked, onChange}) => {
       checked={checked}
       onChange={handleChange}
        />
-        {/* <span className="custom-radio" /> */}
        {label}
        </label>
     </div>

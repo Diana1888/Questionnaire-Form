@@ -1,6 +1,6 @@
-const Input = ({ name, placeholder, value, onChange, image }) => {
+const Input = ({ name, placeholder, value, onChange, children}) => {
   return (
-    <div  className='input-form'>
+    <div  >
 
       <input
         name={name}
@@ -9,9 +9,7 @@ const Input = ({ name, placeholder, value, onChange, image }) => {
         value={value}
         onChange={onChange}
       />
-     
-
-      <img src={image} alt={placeholder} />
+        {children}
       </div>
   );
 };
