@@ -13,6 +13,7 @@ const RadioButton = ({ name, label, checked, onChange}) => {
   return(
     <div>
       <label  className={`input-form-title checkbox radio ${checked ? 'checked-checkbox' : ''}`} >
+        <div className={`${checked ? 'checked-radio' : 'unchecked-radio'}`}></div>
       <input
       className="input-box"
       type="radio"
@@ -20,7 +21,7 @@ const RadioButton = ({ name, label, checked, onChange}) => {
       checked={checked}
       onChange={handleChange}
        />
-        <span className="custom-radio" />
+        {/* <span className="custom-radio" /> */}
        {label}
        </label>
     </div>

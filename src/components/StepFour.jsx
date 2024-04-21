@@ -9,12 +9,14 @@ const StepFour = () =>{
 
 
   return(
-    <div className='final-step form-steps'>
+    <div className='final-step'>
       <img src={finalicon} alt="submiticon" />
-      <StepsHeader
+      <div className='final-step-header'>
+      <StepsHeader 
         title="Submit your quote request"
         subtitle="Please review all the information you previously typed in the past steps, and if all is okay, submit your message to receive a project quote in 24 - 48 hours."
       />
+      </div>
       <div className='submit-btn'>
       <Button label="Submit" onClick={()=> handleSubmit()}/>
       </div>

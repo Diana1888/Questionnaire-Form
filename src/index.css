@@ -146,21 +146,18 @@ input:focus{
   display: flex;
   justify-content: space-between;
   border-radius: 46px;
-  width: 246px;
   height: 40px;
-  padding: 12px 16px;
+  padding: 14px 16px;
   border: 1px solid #EFF0F6;
   color: #6F6C90;
   font-size: 18px;
-  margin-top: 17px;
+  margin-top: 14px;
   align-items: center;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 6px #13124212;
 }
 
 
-.input-with-button{
-  display: flex;
-  align-items: center;
-}
 
 .multiform-header{
   max-width: 566px;
@@ -225,8 +222,8 @@ input:focus{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  gap: 28px;
-  margin-top: 23px;
+  gap: 25px;
+  padding-top: 30px;
   align-items: center;
 }
 
@@ -259,13 +256,14 @@ input:focus{
   box-shadow: 0px 2px 6px rgba(19, 18, 66, 0.07);
 }
 
+
 .checked-checkbox {
   border: 2px solid #4A3AFF; 
   box-shadow: 0px 2px 6px rgba(19, 18, 66, 0.07);
 }
 
 .radio{
-  padding: 45px 0 45px 32px;
+  padding: 46px 0 46px 32px;
 }
 
 .radio-label{
@@ -281,41 +279,45 @@ input:focus{
     visibility: hidden;
 }
 
-.custom-radio {
-  left: -8px;
-  top: 6px;
-  cursor: pointer;
-  width: 17px;
-  height: 17px;
-  border: 2px solid #9a9a9a;
-  border-radius: 50%;
-  display: inline-block;
+.unchecked-radio{
+  width: 24px; 
+  height: 24px;
+  border-radius: 100%; 
+  border: #D9DBE9 solid 1.2px;
+
+}
+.checked-radio {
+  background-color: #4A3AFF; 
+  width: 24px; 
+  height: 24px;
+  border-radius: 100%; 
   position: relative;
 }
 
-/* for inner filled circle */
-.custom-radio::after {
+.checked-radio::before {
   content: '';
-  width: 12px;
-  height: 12px;
-  background: #f4b400;
   position: absolute;
-  border-radius: 50%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  opacity: 0;
-  transition: opacity 0.2s;
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+  background-color: #FFFFFF; 
+  width: 9px; 
+  height: 9px; 
+  border-radius: 100%; 
 }
 
 
+.final-step-header{
+padding-top: 13px;
+}
+
 .final-step{
-  margin-top: 61px;
   text-align: center;
+  padding: 30px 60px 0px;
 }
 
 .submit-btn{
-  margin-top: 20px;
+  padding-top: 30px;
 }
 
 .previous-btn{
