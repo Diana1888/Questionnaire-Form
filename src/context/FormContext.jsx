@@ -1,4 +1,4 @@
-import { createContext, useReducer } from 'react';
+import { createContext, useReducer, useCallback } from 'react';
 
 const FormContext = createContext({});
 
@@ -39,10 +39,12 @@ const reducer = (state, action) => {
 };
 
 export const FormProvider = ({ children }) => {
-  // const [{ currentStep, contactName, email, phone, company, development, webDesign, marketing,
-  //   other, five, ten, twenty, fifty}, dispatch] = useReducer(reducer, initialState);
-
   const [state,  dispatch] = useReducer(reducer, initialState);
+  const handleSubmit = useCallback(() => {
+    localStorage.setItem('formData', JSON.stringify(state));
+    console.log(localStorage);
+
+  }, [state]);
   
 
   const nextStep = () => {
@@ -53,12 +55,38 @@ export const FormProvider = ({ children }) => {
     dispatch({ type: 'PREVIOUS_STEP' });
   };
 
-  const setData = () => {
-    dispatch({ type: 'SET_DATA', payload: data})
-  }
+  const handleInput = (e) => {
+    const { name, value } = e.target;
+    dispatch({ type: 'SET_DATA', payload: { [name]: value } });
+    console.log(value);
+  };
+
+  const handleCheckbox = (name, isChecked) => {
+    dispatch({ type: 'SET_DATA', payload: { services: { ...state.services, [name]: isChecked } } });
+    console.log(name);
+  };
+
+  const handleRadio = (name, isChecked) => {
+    const updatedBudget = {};
+    
+    // Set the clicked radio button to isChecked
+    updatedBudget[name] = isChecked;
+  
+    // Uncheck all other radio buttons
+    Object.keys(state.budget).forEach(key => {
+      if (key !== name) {
+        updatedBudget[key] = false;
+      }
+    });
+  
+    dispatch({ type: 'SET_DATA', payload: { budget: updatedBudget } });
+    console.log(name);
+  };
+
+  
   return (
     <FormContext.Provider
-      value={{  dispatch, nextStep, previousStep, state, setData }}
+      value={{  dispatch, nextStep, previousStep, state, handleInput, handleCheckbox, handleRadio, handleSubmit }}
     >
       {children}
     </FormContext.Provider>

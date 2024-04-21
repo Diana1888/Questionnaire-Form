@@ -5,12 +5,9 @@ import FormContext from '../context/FormContext';
 import content from '../content/content';
 
 const StepThree = () =>{
-  const {dispatch, state } = useContext(FormContext);
+  const {handleRadio, state } = useContext(FormContext);
 
-  const handleChange = (name, isChecked) => {
-    dispatch({ type: 'SET_DATA', payload: { budget: { ...state.budget, [name]: isChecked } } });
-    console.log(name);
-  };
+ 
   return(
     <div className='form-steps'>
       <StepsHeader
@@ -24,7 +21,7 @@ const StepThree = () =>{
       name={option.name}
       checked={state.budget[option.name]}
       label={option.label}
-      onChange={handleChange}
+      onChange={handleRadio}
       />
         ))}
 

@@ -1,5 +1,4 @@
 import Logo from "./Logo";
-import '../styles/Header.css'
 import Button from "./Button";
 
 import Input from "./Input";

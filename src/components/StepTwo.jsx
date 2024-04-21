@@ -5,13 +5,9 @@ import FormContext from '../context/FormContext';
 import content from '../content/content';
 
 const StepTwo = () => {
-  const { dispatch, state } = useContext(FormContext);
+  const { handleCheckbox, state } = useContext(FormContext);
 
-  const handleChange = (name, isChecked) => {
-    dispatch({ type: 'SET_DATA', payload: { services: { ...state.services, [name]: isChecked } } });
-    console.log(name);
-  };
-
+ 
   return (
     <div className='form-steps'>
       <StepsHeader
@@ -28,7 +24,7 @@ const StepTwo = () => {
             <Checkbox name={service.name}
             checked={state.services[service.name]}
             label={service.label}
-             onChange={handleChange} 
+             onChange={handleCheckbox} 
              image={service.icon}/>
           </div>
         ))}

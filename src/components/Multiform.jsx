@@ -50,25 +50,24 @@ const Multiform = () => {
         <Stepper/>
         {displayStep(currentStep)}
       </div>
-      <div className="step-btns">
+      
         {currentStep === 1 && (
-          <>
-          <Button className="hidden-btn" />
+          <div className="step-next">
             <Button className='next-btn' onClick={handleNextClick} label="Next step" />
-            </>
+            </div>
           )}
           {(currentStep === 2 || currentStep === 3) && (
-            <>
+            <div className="steps-btns">
               <Button className="previous-btn" onClick={handlePreviousClick} label="Previous step" />
               <Button onClick={handleNextClick} label="Next step" />
-            </>
+            </div>
           )}
           {currentStep === 4 && (
+            <div className="step-previous">
             <Button className="previous-btn" onClick={handlePreviousClick} label="Previous step" />
+            </div>
           )}
-       
         
-        </div>
     </div>
   );
 };
