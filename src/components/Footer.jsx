@@ -10,10 +10,9 @@ const Footer = () => {
       <Logo />
       <p className="footer-copyright">Copyright © 2021 BRIX Templates | All Rights Reserved</p>
       </div>
-      <div className="input-form" >
-        
+      <div className="input-form input-footer" >
         <Input placeholder="Enter your email">
-        <Button label="Subscribe"/>
+        <Button  className="footer-btn" label="Subscribe"/>
         </Input>
         
       </div>

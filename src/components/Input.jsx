@@ -1,7 +1,6 @@
 const Input = ({ name, placeholder, value, onChange, children}) => {
   return (
-    <div  >
-
+    <>
       <input
         name={name}
         type="text"
@@ -10,7 +9,7 @@ const Input = ({ name, placeholder, value, onChange, children}) => {
         onChange={onChange}
       />
         {children}
-      </div>
+      </>
   );
 };
 
