@@ -4,25 +4,25 @@ import Button from './Button';
 import { useContext } from 'react';
 import FormContext from '../context/FormContext';
 
-const StepFour = () =>{
-  const { handleSubmit} = useContext(FormContext);
+const StepFour = () => {
+  const { handleSubmit } = useContext(FormContext);
 
 
-  return(
-    <div className='final-step'>
+
+  return (
+    <div className="final-step">
       <img src={finalicon} alt="submiticon" />
-      <div className='final-step-header'>
-      <StepsHeader 
-        title="Submit your quote request"
-        subtitle="Please review all the information you previously typed in the past steps, and if all is okay, submit your message to receive a project quote in 24 - 48 hours."
-      />
+      <div className="final-step-header">
+        <StepsHeader
+          title="Submit your quote request"
+          subtitle="Please review all the information you previously typed in the past steps, and if all is okay, submit your message to receive a project quote in 24 - 48 hours."
+        />
       </div>
-      <div className='submit-btn'>
-      <Button label="Submit" onClick={()=> handleSubmit()}/>
+      <div className="submit-btn">
+        <Button label="Submit" onClick={handleSubmit} />
       </div>
     </div>
-  )
-
-}
+  );
+};
 
 export default StepFour;

@@ -1,4 +1,4 @@
-import { createContext, useReducer, useCallback } from 'react';
+import { createContext, useReducer} from 'react';
 
 const FormContext = createContext({});
 
@@ -40,11 +40,6 @@ const reducer = (state, action) => {
 
 export const FormProvider = ({ children }) => {
   const [state,  dispatch] = useReducer(reducer, initialState);
-  const handleSubmit = useCallback(() => {
-    localStorage.setItem('formData', JSON.stringify(state));
-    console.log(localStorage);
-
-  }, [state]);
   
 
   const nextStep = () => {
@@ -75,11 +70,32 @@ export const FormProvider = ({ children }) => {
     );
     dispatch({ type: 'SET_DATA', payload: { budget: updatedBudget } });
   };
+
+  const handleSubmit = () => {
+    const selectedServices = state.services
+      .filter((service) => service.selected)
+      .map((service) => service.name);
+    const selectedBudget = state.budget
+      .filter((option) => option.selected)
+      .map((option) => option.name);
+
+    const formData = {
+      contactName: state.contactName,
+      email: state.email,
+      phone: state.phone,
+      company: state.company,
+      services: selectedServices,
+      budget: selectedBudget
+    };
+
+    const formDataJson = JSON.stringify(formData);
+    localStorage.setItem('formData', formDataJson);
+  };
   
   
   return (
     <FormContext.Provider
-      value={{  dispatch, nextStep, previousStep, state, handleInput, handleCheckbox, handleRadio, handleSubmit }}
+      value={{  dispatch, nextStep, previousStep, state, handleInput, handleCheckbox, handleRadio, handleSubmit}}
     >
       {children}
     </FormContext.Provider>
