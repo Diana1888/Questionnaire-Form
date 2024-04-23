@@ -62,20 +62,20 @@ const content = {
 
   radioOptions: [
     {
-      name: 'opt1',
-      label: '$5.000 - $10.000'
+      // name: 'opt1',
+      name: '$5.000 - $10.000'
     },
     {
-      name: 'opt2',
-      label: '$10.000 - $20.000'
+      // name: 'opt2',
+      name: '$10.000 - $20.000'
     },
     {
-      name: 'opt3',
-      label: '$20.000 - $50.000'
+      // name: 'opt3',
+      name: '$20.000 - $50.000'
     },
     {
-      name: 'opt4',
-      label: '$50.000 +'
+      // name: 'opt4',
+      name: '$50.000 +'
     }
   ]
 };

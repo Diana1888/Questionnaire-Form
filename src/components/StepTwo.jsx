@@ -22,7 +22,7 @@ const StepTwo = () => {
    
             
             <Checkbox name={service.name}
-            checked={state.services[service.name]}
+             checked={state.services.find(s => s.name === service.name)?.selected || false}
             label={service.label}
              onChange={handleCheckbox} 
              image={service.icon}/>

@@ -3,7 +3,7 @@
 
 
 
-const RadioButton = ({ name, label, checked, onChange}) => {
+const RadioButton = ({ name, checked, onChange}) => {
   const handleChange = () => {
     if (!checked) { // Only trigger onChange if the radio button is not already checked
       onChange(name, true);
@@ -21,7 +21,7 @@ const RadioButton = ({ name, label, checked, onChange}) => {
       checked={checked}
       onChange={handleChange}
        />
-       {label}
+       {name}
        </label>
     </div>
   )

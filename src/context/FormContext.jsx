@@ -8,18 +8,18 @@ const initialState = {
   email: '',
   phone: '',
   company: '',
-  services: {
-    development: false,
-    webDesign: false,
-    marketing: false,
-    other: false,
-  },
-  budget: {
-    opt1: false,
-    opt2: false,
-    opt3: false,
-    opt4: false,
-  },
+  services: [
+    { name: 'development', selected: false },
+    { name: 'webDesign', selected: false },
+    { name: 'marketing', selected: false },
+    { name: 'other', selected: false }
+  ],
+  budget: [
+    { name: '$5.000 - $10.000', selected: false },
+    { name: '$10.000 - $20.000', selected: false },
+    { name: '$20.000 - $50.000', selected: false },
+    { name: '$50.000 +', selected: false }
+  ]
 
 };
 
@@ -55,6 +55,7 @@ export const FormProvider = ({ children }) => {
     dispatch({ type: 'PREVIOUS_STEP' });
   };
 
+
   const handleInput = (e) => {
     const { name, value } = e.target;
     dispatch({ type: 'SET_DATA', payload: { [name]: value } });
@@ -62,27 +63,19 @@ export const FormProvider = ({ children }) => {
   };
 
   const handleCheckbox = (name, isChecked) => {
-    dispatch({ type: 'SET_DATA', payload: { services: { ...state.services, [name]: isChecked } } });
-    console.log(name);
+    const updatedServices = state.services.map(service =>
+      service.name === name ? { ...service, selected: isChecked } : service
+    );
+    dispatch({ type: 'SET_DATA', payload: { services: updatedServices } });
   };
 
-  const handleRadio = (name, isChecked) => {
-    const updatedBudget = {};
-    
-    // Set the clicked radio button to isChecked
-    updatedBudget[name] = isChecked;
-  
-    // Uncheck all other radio buttons
-    Object.keys(state.budget).forEach(key => {
-      if (key !== name) {
-        updatedBudget[key] = false;
-      }
-    });
-  
+  const handleRadio = (name) => {
+    const updatedBudget = state.budget.map(item =>
+      item.name === name ? { ...item, selected: true } : { ...item, selected: false }
+    );
     dispatch({ type: 'SET_DATA', payload: { budget: updatedBudget } });
-    console.log(name);
   };
-
+  
   
   return (
     <FormContext.Provider

@@ -19,8 +19,8 @@ const StepThree = () =>{
       <RadioButton
       key={option.name} 
       name={option.name}
-      checked={state.budget[option.name]}
-      label={option.label}
+      checked={state.budget.find(budgetItem => budgetItem.name === option.name)?.selected || false}
+      label={option.name}
       onChange={handleRadio}
       />
         ))}
