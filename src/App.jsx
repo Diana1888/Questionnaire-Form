@@ -12,7 +12,7 @@ function App() {
     <FormProvider> 
       <Multiform />
     </FormProvider>
-    <div className="footer-line"></div>
+    {/* <div className="footer-line"></div> */}
     <Footer/>
     </div>
   )
