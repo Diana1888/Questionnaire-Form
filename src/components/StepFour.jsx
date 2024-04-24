@@ -7,8 +7,6 @@ import FormContext from '../context/FormContext';
 const StepFour = () => {
   const { handleSubmit } = useContext(FormContext);
 
-
-
   return (
     <div className="final-step">
       <img src={finalicon} alt="submiticon" />
