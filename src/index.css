@@ -28,7 +28,6 @@
 }
 
 .footer-line {
-  flex-grow: 1;
   border-bottom: #d9dbe9 solid 1px;
 }
 
@@ -346,9 +345,97 @@ input:focus {
   justify-self: center;
 }
 
-
 @media (max-width: 990px) {
-  .footer{
+  .footer {
     flex-direction: column;
+  }
+}
+
+@media (max-width: 720px) {
+  .input-form {
+    padding: 8px 10px;
+  }
+
+  .checkbox {
+    width: 210px;
+  }
+}
+
+@media (max-width: 675px) {
+  .form {
+    height: 750px;
+  }
+  .form-blocks {
+    flex-direction: column;
+  }
+
+  .final-step {
+    padding: 120px 60px 0px;
+  }
+
+  .multiform {
+    margin-bottom: 46px;
+  }
+
+  .input-form {
+    width: 400px;
+  }
+
+  .progress-line-container {
+    width: 50px;
+  }
+
+  .radio {
+    padding: 36px 0 36px 22px;
+  }
+}
+
+@media (max-width: 540px) {
+  .input-form {
+    width: 300px;
+  }
+
+  .input-footer {
+    min-width: 272px;
+  }
+
+  .form {
+    padding: 32px 26px 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    flex-direction: column;
+  }
+
+  .input-form {
+    width: 250px;
+  }
+
+  .input-footer {
+    min-width: 100%;
+  }
+  .progress-line-container {
+    width: 20px;
+  }
+  .final-step {
+    padding: 60px 60px 0px;
+  }
+}
+
+@media (max-width: 340px) {
+  .form {
+    padding: 32px 16px 60px;
+  }
+  .progress-line-container {
+    width: 10px;
+  }
+  .input-footer {
+    flex-direction: column;
+    min-width: 200px;
+  }
+  .footer-btn {
+    margin-top: 40px;
   }
 }
