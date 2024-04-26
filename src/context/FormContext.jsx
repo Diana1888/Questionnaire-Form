@@ -1,4 +1,4 @@
-import { createContext, useReducer} from 'react';
+import { createContext, useReducer } from 'react';
 
 const FormContext = createContext({});
 
@@ -20,7 +20,6 @@ const initialState = {
     { name: '$20.000 - $50.000', selected: false },
     { name: '$50.000 +', selected: false }
   ]
-
 };
 
 const reducer = (state, action) => {
@@ -39,8 +38,7 @@ const reducer = (state, action) => {
 };
 
 export const FormProvider = ({ children }) => {
-  const [state,  dispatch] = useReducer(reducer, initialState);
-  
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   const nextStep = () => {
     dispatch({ type: 'NEXT_STEP' });
@@ -50,7 +48,6 @@ export const FormProvider = ({ children }) => {
     dispatch({ type: 'PREVIOUS_STEP' });
   };
 
-
   const handleInput = (e) => {
     const { name, value } = e.target;
     dispatch({ type: 'SET_DATA', payload: { [name]: value } });
@@ -58,15 +55,17 @@ export const FormProvider = ({ children }) => {
   };
 
   const handleCheckbox = (name, isChecked) => {
-    const updatedServices = state.services.map(service =>
+    const updatedServices = state.services.map((service) =>
       service.name === name ? { ...service, selected: isChecked } : service
     );
     dispatch({ type: 'SET_DATA', payload: { services: updatedServices } });
   };
 
   const handleRadio = (name) => {
-    const updatedBudget = state.budget.map(item =>
-      item.name === name ? { ...item, selected: true } : { ...item, selected: false }
+    const updatedBudget = state.budget.map((item) =>
+      item.name === name
+        ? { ...item, selected: true }
+        : { ...item, selected: false }
     );
     dispatch({ type: 'SET_DATA', payload: { budget: updatedBudget } });
   };
@@ -91,11 +90,19 @@ export const FormProvider = ({ children }) => {
     const formDataJson = JSON.stringify(formData);
     localStorage.setItem('formData', formDataJson);
   };
-  
-  
+
   return (
     <FormContext.Provider
-      value={{  dispatch, nextStep, previousStep, state, handleInput, handleCheckbox, handleRadio, handleSubmit}}
+      value={{
+        dispatch,
+        nextStep,
+        previousStep,
+        state,
+        handleInput,
+        handleCheckbox,
+        handleRadio,
+        handleSubmit
+      }}
     >
       {children}
     </FormContext.Provider>

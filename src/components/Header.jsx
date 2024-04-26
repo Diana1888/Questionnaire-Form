@@ -1,21 +1,13 @@
-import Logo from "./Logo";
-import Button from "./Button";
-
+import Logo from './Logo';
+import Button from './Button';
 
 const Header = () => {
-
-  return(
+  return (
     <div className="header">
       <Logo />
-      <Button label="Clone now"/>
+      <Button label="Clone now" />
     </div>
-  )
-}
+  );
+};
 
 export default Header;
-
-
-
-
-
-
