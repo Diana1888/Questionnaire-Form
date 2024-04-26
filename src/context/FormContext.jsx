@@ -51,7 +51,6 @@ export const FormProvider = ({ children }) => {
   const handleInput = (e) => {
     const { name, value } = e.target;
     dispatch({ type: 'SET_DATA', payload: { [name]: value } });
-    console.log(value);
   };
 
   const handleCheckbox = (name, isChecked) => {
