@@ -13,27 +13,35 @@ const content = {
   contactData: [
     {
       name: 'contactName',
-      label: 'Name',
+      label: 'Name *',
       placeholder: 'John Carter',
-      icon: nameicon
+      icon: nameicon,
+      required: true,
+      type: 'text'
     },
     {
       name: 'email',
-      label: 'Email',
+      label: 'Email *',
       placeholder: 'Email Address',
-      icon: emailicon
+      icon: emailicon,
+      required: true,
+      type: 'email'
     },
     {
       name: 'phone',
       label: 'Phone Number',
       placeholder: '(123) 456 - 7890',
-      icon: phoneicon
+      icon: phoneicon,
+      required: false,
+      type: 'number'
     },
     {
       name: 'company',
       label: 'Company',
       placeholder: 'Company name',
-      icon: companyicon
+      icon: companyicon,
+      required: false,
+      type: 'text'
     }
   ],
 

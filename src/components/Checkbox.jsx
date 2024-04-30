@@ -5,7 +5,7 @@ const Checkbox = ({ name, label, checked, onChange, image }) => {
   return (
     <div>
       <label
-        className={`input-form-title checkbox ${
+        className={`checkbox ${
           checked ? 'checked-checkbox' : ''
         }`}
       >

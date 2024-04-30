@@ -262,7 +262,7 @@ input:focus {
 }
 
 .checked-checkbox {
-  border: 2px solid #4a3aff;
+  border: 1px solid #4a3aff;
   box-shadow: 0px 2px 6px rgba(19, 18, 66, 0.07);
 }
 
@@ -284,10 +284,10 @@ input:focus {
 }
 
 .unchecked-radio {
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 22px;
   border-radius: 100%;
-  border: #d9dbe9 solid 1.2px;
+  border: #d9dbe9 solid 1px;
   margin-right: 10px;
 }
 .checked-radio {
@@ -310,6 +310,7 @@ input:focus {
   height: 9px;
   border-radius: 100%;
 }
+
 
 .final-step-header {
   padding-top: 13px;
