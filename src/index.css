@@ -325,25 +325,29 @@ input:focus {
   padding-top: 30px;
 }
 
+
 .previous-btn {
   color: #4a3aff;
   border: 1px solid #4a3aff;
   background: none;
   font-weight: normal;
+  display: flex;
+  justify-content: flex-start;
 }
 
 .steps-btns {
   display: flex;
   justify-content: space-between;
+
+
 }
 
 .step-next {
-  display: flex;
-  justify-content: flex-end;
+  margin-left: auto;
 }
 
 .step-previous {
-  justify-self: center;
+  margin-right: auto;
 }
 
 @media (max-width: 990px) {
@@ -352,7 +356,7 @@ input:focus {
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width: 700px) {
   .input-form {
     padding: 8px 10px;
   }

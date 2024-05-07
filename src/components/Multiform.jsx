@@ -5,21 +5,20 @@ import StepThree from './StepThree';
 import StepFour from './StepFour';
 
 import Button from './Button';
-import { useContext } from 'react';
+import { useCallback, useContext } from 'react';
 import FormContext from '../context/FormContext';
 
 const Multiform = () => {
   const { state, nextStep, previousStep } = useContext(FormContext);
   const { currentStep } = state;
 
-  const handleNextClick = () => {
+  const handleNextClick = useCallback(() => {
     nextStep();
-  };
+  }, [nextStep]);
 
-  const handlePreviousClick = () => {
+  const handlePreviousClick = useCallback(() => {
     previousStep();
-  };
-
+  }, [previousStep]);
   const displayStep = (currentStep) => {
     switch (currentStep) {
       case 1:
@@ -48,35 +47,26 @@ const Multiform = () => {
         <Stepper />
         {displayStep(currentStep)}
       </div>
-
-      {currentStep === 1 && (
-        <div className="step-next">
-          <Button
-            className="next-btn"
-            onClick={handleNextClick}
-            label="Next step"
-          />
-        </div>
-      )}
-      {(currentStep === 2 || currentStep === 3) && (
-        <div className="steps-btns">
-          <Button
-            className="previous-btn"
-            onClick={handlePreviousClick}
-            label="Previous step"
-          />
-          <Button onClick={handleNextClick} label="Next step" />
-        </div>
-      )}
-      {currentStep === 4 && (
-        <div className="step-previous">
-          <Button
-            className="previous-btn"
-            onClick={handlePreviousClick}
-            label="Previous step"
-          />
-        </div>
-      )}
+      <div className="steps-btns">
+        {currentStep !== 1 && (
+          <div className="step-previous">
+            <Button
+              className="previous-btn"
+              onClick={handlePreviousClick}
+              label="Previous step"
+            />
+          </div>
+        )}
+        {currentStep !== 4 && (
+          <div className="step-next">
+            <Button
+              className="next-btn"
+              onClick={handleNextClick}
+              label="Next step"
+            />
+          </div>
+        )}
+      </div>
     </div>
   );
 };
