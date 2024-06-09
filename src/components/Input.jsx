@@ -1,4 +1,4 @@
-const Input = ({ name, placeholder, value, onChange, children }) => {
+const Input = ({ name, placeholder, value, onChange, required, children }) => {
   return (
     <>
       <input
@@ -7,6 +7,7 @@ const Input = ({ name, placeholder, value, onChange, children }) => {
         placeholder={placeholder}
         value={value}
         onChange={onChange}
+        required={required}
       />
       {children}
     </>

@@ -1,4 +1,4 @@
-import { createContext, useReducer } from 'react';
+import { createContext, useCallback, useReducer, useState } from 'react';
 
 const FormContext = createContext({});
 
@@ -39,18 +39,40 @@ const reducer = (state, action) => {
 
 export const FormProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
+  const [nameError, setNameError] = useState('');
+  const [emailError, setEmailError] = useState('');
 
-  const nextStep = () => {
+  const nextStep = useCallback(() => {
     dispatch({ type: 'NEXT_STEP' });
-  };
+  }, [dispatch]);
 
-  const previousStep = () => {
+  const previousStep = useCallback(() => {
     dispatch({ type: 'PREVIOUS_STEP' });
-  };
+  }, [dispatch]);
+
+  const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 
   const handleInput = (e) => {
     const { name, value } = e.target;
     dispatch({ type: 'SET_DATA', payload: { [name]: value } });
+
+    if (name === 'contactName') {
+      if (value.trim() === '') {
+        setNameError('Name is required');
+      } else {
+        setNameError('');
+      }
+    }
+
+    if (name === 'email') {
+      if (value.trim() === '') {
+        setEmailError('Email is required');
+      } else if (!emailRegex.test(value.trim())) {
+        setEmailError('Invalid email format');
+      } else {
+        setEmailError('');
+      }
+    }
   };
 
   const handleCheckbox = (name, isChecked) => {
@@ -70,6 +92,17 @@ export const FormProvider = ({ children }) => {
   };
 
   const handleSubmit = () => {
+    if (state.contactName.trim() === '') {
+      setNameError('Name is required');
+    }
+    if (state.email.trim() === '') {
+      setEmailError('Email is required');
+    }
+
+    if (nameError || emailError) {
+      // Don't submit if there are validation errors
+      return;
+    }
     const selectedServices = state.services
       .filter((service) => service.selected)
       .map((service) => service.name);
@@ -100,7 +133,9 @@ export const FormProvider = ({ children }) => {
         handleInput,
         handleCheckbox,
         handleRadio,
-        handleSubmit
+        handleSubmit,
+        nameError,
+        emailError
       }}
     >
       {children}

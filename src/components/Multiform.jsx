@@ -1,25 +1,38 @@
+import { useCallback, useMemo, useContext } from 'react';
+import FormContext from '../context/FormContext';
 import Stepper from './Stepper';
 import StepOne from './StepOne';
 import StepTwo from './StepTwo';
 import StepThree from './StepThree';
 import StepFour from './StepFour';
-
 import Button from './Button';
-import { useCallback, useContext } from 'react';
-import FormContext from '../context/FormContext';
 
 const Multiform = () => {
-  const { state, nextStep, previousStep } = useContext(FormContext);
+  const { state, nextStep, previousStep} = useContext(FormContext);
   const { currentStep } = state;
 
   const handleNextClick = useCallback(() => {
+    
+    if (state.contactName.trim() === '' || state.email.trim() === '') {
+      if (state.contactName.trim() === '') {
+        // Set name error message
+      }
+      if (state.email.trim() === '') {
+        // Set email error message
+      }
+      return; 
+    }
+
     nextStep();
-  }, [nextStep]);
+  }, [state.contactName, state.email, nextStep]);
+
+  const isNextDisabled = state.contactName.trim() === '' || state.email.trim() === '';
 
   const handlePreviousClick = useCallback(() => {
     previousStep();
   }, [previousStep]);
-  const displayStep = (currentStep) => {
+
+  const displayStep = useMemo(() => {
     switch (currentStep) {
       case 1:
         return <StepOne />;
@@ -32,7 +45,7 @@ const Multiform = () => {
       default:
         return null;
     }
-  };
+  }, [currentStep]);
 
   return (
     <div className="multiform">
@@ -44,8 +57,8 @@ const Multiform = () => {
         </p>
       </div>
       <div className="form">
-        <Stepper />
-        {displayStep(currentStep)}
+        <Stepper currentStep={currentStep} />
+        {displayStep}
       </div>
       <div className="steps-btns">
         {currentStep !== 1 && (
@@ -63,6 +76,7 @@ const Multiform = () => {
               className="next-btn"
               onClick={handleNextClick}
               label="Next step"
+              disabled={isNextDisabled}
             />
           </div>
         )}
@@ -70,4 +84,5 @@ const Multiform = () => {
     </div>
   );
 };
+
 export default Multiform;

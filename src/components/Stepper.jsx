@@ -1,4 +1,4 @@
-import { useContext, useMemo } from 'react';
+import { useContext } from 'react';
 import FormContext from '../context/FormContext';
 import content from '../content/content';
 
@@ -6,7 +6,7 @@ const Stepper = () => {
   const { state } = useContext(FormContext);
   const { currentStep } = state;
 
-  return useMemo(() => (
+  return (
     <div>
       <div className="steps-container">
         {content.steps.map((step, index) => (
@@ -36,7 +36,7 @@ const Stepper = () => {
       </div>
       <hr />
     </div>
-  ), [currentStep] );
+  );
 };
 
 export default Stepper;

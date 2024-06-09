@@ -5,7 +5,8 @@ import FormContext from '../context/FormContext';
 import content from '../content/content';
 
 const StepOne = () => {
-  const { state, handleInput } = useContext(FormContext);
+  const { state, handleInput, nameError, emailError} = useContext(FormContext);
+  
 
   return (
     <div className="form-steps">
@@ -17,16 +18,24 @@ const StepOne = () => {
         {content.contactData.map((data) => (
           <label key={data.name} className="input-form-title">
             {data.label}
-
+            {data.name === 'contactName' && nameError && (
+              <span className="error">Invalid input</span>
+            )}
+            {data.name === 'email' && emailError && (
+              <span className="error">Invalid input</span>
+            )}
             <div className="input-form">
               <Input
                 name={data.name}
                 placeholder={data.placeholder}
                 value={state[data.name]}
                 onChange={handleInput}
+                required={data.required}
               />
+            
               <img src={data.icon} alt={data.label} />
             </div>
+           
           </label>
         ))}
       </div>
