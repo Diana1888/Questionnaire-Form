@@ -271,7 +271,7 @@ input:focus {
 }
 
 .radio {
-  padding: 46px 0 46px 32px;
+  padding: 44px 0 44px 50px;
 }
 
 .radio-label {
@@ -371,7 +371,7 @@ input:focus {
   }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 703px) {
   .input-form {
     padding: 8px 10px;
     width: 250px;

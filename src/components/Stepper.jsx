@@ -1,10 +1,7 @@
-import { useContext } from 'react';
-import FormContext from '../context/FormContext';
+import React from 'react';
 import content from '../content/content';
 
-const Stepper = () => {
-  const { state } = useContext(FormContext);
-  const { currentStep } = state;
+const Stepper = ({ currentStep }) => {
 
   return (
     <div>
@@ -39,4 +36,4 @@ const Stepper = () => {
   );
 };
 
-export default Stepper;
+export default React.memo(Stepper);

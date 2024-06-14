@@ -46,7 +46,7 @@ const Multiform = () => {
         </p>
       </div>
       <div className="form">
-        <MemoizedStepper currentStep={currentStep} />
+        <Stepper currentStep={currentStep} />
         {displayStep}
       </div>
       <div className="steps-btns">
@@ -75,6 +75,6 @@ const Multiform = () => {
 };
 
 const MemoizedButton = React.memo(Button);
-const MemoizedStepper = React.memo(Stepper);
+
 
 export default Multiform;
