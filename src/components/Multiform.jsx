@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useContext } from 'react';
+import React,  { useCallback, useMemo, useContext } from 'react';
 import FormContext from '../context/FormContext';
 import Stepper from './Stepper';
 import StepOne from './StepOne';
@@ -9,24 +9,13 @@ import Button from './Button';
 
 const Multiform = () => {
   const { state, nextStep, previousStep} = useContext(FormContext);
-  const { currentStep } = state;
+  const { currentStep, contactName, email} = state;
 
   const handleNextClick = useCallback(() => {
-    
-    if (state.contactName.trim() === '' || state.email.trim() === '') {
-      if (state.contactName.trim() === '') {
-        // Set name error message
-      }
-      if (state.email.trim() === '') {
-        // Set email error message
-      }
-      return; 
-    }
-
     nextStep();
-  }, [state.contactName, state.email, nextStep]);
+  }, [nextStep]);
 
-  const isNextDisabled = state.contactName.trim() === '' || state.email.trim() === '';
+  const isNextDisabled = contactName.trim() === '' || email.trim() === '';
 
   const handlePreviousClick = useCallback(() => {
     previousStep();
@@ -57,13 +46,13 @@ const Multiform = () => {
         </p>
       </div>
       <div className="form">
-        <Stepper currentStep={currentStep} />
+        <MemoizedStepper currentStep={currentStep} />
         {displayStep}
       </div>
       <div className="steps-btns">
         {currentStep !== 1 && (
           <div className="step-previous">
-            <Button
+            <MemoizedButton
               className="previous-btn"
               onClick={handlePreviousClick}
               label="Previous step"
@@ -72,7 +61,7 @@ const Multiform = () => {
         )}
         {currentStep !== 4 && (
           <div className="step-next">
-            <Button
+            <MemoizedButton
               className="next-btn"
               onClick={handleNextClick}
               label="Next step"
@@ -84,5 +73,8 @@ const Multiform = () => {
     </div>
   );
 };
+
+const MemoizedButton = React.memo(Button);
+const MemoizedStepper = React.memo(Stepper);
 
 export default Multiform;

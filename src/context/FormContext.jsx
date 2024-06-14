@@ -42,6 +42,7 @@ export const FormProvider = ({ children }) => {
   const [nameError, setNameError] = useState('');
   const [emailError, setEmailError] = useState('');
 
+
   const nextStep = useCallback(() => {
     dispatch({ type: 'NEXT_STEP' });
   }, [dispatch]);
@@ -54,6 +55,13 @@ export const FormProvider = ({ children }) => {
 
   const handleInput = (e) => {
     const { name, value } = e.target;
+
+    if (name === 'phone') {
+      if (!/^\d*$/.test(value)) {
+        return;
+      }
+    }
+
     dispatch({ type: 'SET_DATA', payload: { [name]: value } });
 
     if (name === 'contactName') {
@@ -100,9 +108,9 @@ export const FormProvider = ({ children }) => {
     }
 
     if (nameError || emailError) {
-      // Don't submit if there are validation errors
       return;
     }
+
     const selectedServices = state.services
       .filter((service) => service.selected)
       .map((service) => service.name);
@@ -135,7 +143,7 @@ export const FormProvider = ({ children }) => {
         handleRadio,
         handleSubmit,
         nameError,
-        emailError
+        emailError,
       }}
     >
       {children}
