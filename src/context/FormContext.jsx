@@ -50,7 +50,7 @@ export const FormProvider = ({ children }) => {
     dispatch({ type: 'PREVIOUS_STEP' });
   }, [dispatch]);
 
-  const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+  const emailRegex = /^[\w.-]+@[\w.-]+\.[\w-]{2,4}$/;
 
   const handleInput = (e) => {
     const { name, value } = e.target;

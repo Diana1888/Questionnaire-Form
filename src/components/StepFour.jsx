@@ -11,6 +11,7 @@ const StepFour = () => {
 
   const handleFormSubmit = () => {
     setIsSubmitting(true);
+    handleSubmit();
 
     setTimeout(() => {
       setIsSubmitting(false);
