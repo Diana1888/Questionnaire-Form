@@ -35,4 +35,6 @@ const Stepper = ({ currentStep }) => {
   );
 };
 
-export default React.memo(Stepper);
+const MemoizedStepper = React.memo(Stepper);
+
+export default MemoizedStepper;

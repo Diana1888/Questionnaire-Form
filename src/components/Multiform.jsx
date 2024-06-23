@@ -1,6 +1,7 @@
 import React, { useCallback, useMemo, useContext } from 'react';
 import FormContext from '../context/FormContext';
-import Stepper from './Stepper';
+import MemoizedStepper from './Stepper';
+// import Stepper from './Stepper';
 import StepOne from './StepOne';
 import StepTwo from './StepTwo';
 import StepThree from './StepThree';
@@ -46,7 +47,7 @@ const Multiform = () => {
         </p>
       </div>
       <div className="form">
-        <Stepper currentStep={currentStep} />
+        <MemoizedStepper currentStep={currentStep} />
         {displayStep}
       </div>
       <div className="steps-btns">
