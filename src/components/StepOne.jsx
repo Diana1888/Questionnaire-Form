@@ -5,8 +5,7 @@ import FormContext from '../context/FormContext';
 import content from '../content/content';
 
 const StepOne = () => {
-  const { state, handleInput, nameError, emailError} = useContext(FormContext);
-  
+  const { state, handleInput, nameError, emailError } = useContext(FormContext);
 
   return (
     <div className="form-steps">
@@ -32,10 +31,9 @@ const StepOne = () => {
                 onChange={handleInput}
                 required={data.required}
               />
-            
+
               <img src={data.icon} alt={data.label} />
             </div>
-           
           </label>
         ))}
       </div>

@@ -42,7 +42,6 @@ export const FormProvider = ({ children }) => {
   const [nameError, setNameError] = useState('');
   const [emailError, setEmailError] = useState('');
 
-
   const nextStep = useCallback(() => {
     dispatch({ type: 'NEXT_STEP' });
   }, [dispatch]);
@@ -143,7 +142,7 @@ export const FormProvider = ({ children }) => {
         handleRadio,
         handleSubmit,
         nameError,
-        emailError,
+        emailError
       }}
     >
       {children}

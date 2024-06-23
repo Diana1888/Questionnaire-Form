@@ -1,4 +1,4 @@
-import React,  { useCallback, useMemo, useContext } from 'react';
+import React, { useCallback, useMemo, useContext } from 'react';
 import FormContext from '../context/FormContext';
 import Stepper from './Stepper';
 import StepOne from './StepOne';
@@ -8,8 +8,8 @@ import StepFour from './StepFour';
 import Button from './Button';
 
 const Multiform = () => {
-  const { state, nextStep, previousStep} = useContext(FormContext);
-  const { currentStep, contactName, email} = state;
+  const { state, nextStep, previousStep } = useContext(FormContext);
+  const { currentStep, contactName, email } = state;
 
   const handleNextClick = useCallback(() => {
     nextStep();
@@ -75,6 +75,5 @@ const Multiform = () => {
 };
 
 const MemoizedButton = React.memo(Button);
-
 
 export default Multiform;

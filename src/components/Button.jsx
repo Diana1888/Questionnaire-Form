@@ -1,9 +1,9 @@
 const Button = ({ className, label, onClick, disabled }) => {
   return (
     <div>
-        <button 
-        onClick={onClick} 
-        className={`header-btn ${className} ${disabled ? 'disabled' : ''}`} 
+      <button
+        onClick={onClick}
+        className={`header-btn ${className} ${disabled ? 'disabled' : ''}`}
         disabled={disabled}
       >
         {label}

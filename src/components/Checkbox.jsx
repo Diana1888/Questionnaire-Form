@@ -4,11 +4,7 @@ const Checkbox = ({ name, label, checked, onChange, image }) => {
   };
   return (
     <div>
-      <label
-        className={`checkbox ${
-          checked ? 'checked-checkbox' : ''
-        }`}
-      >
+      <label className={`checkbox ${checked ? 'checked-checkbox' : ''}`}>
         <div className="icon-background">
           <img src={image} alt={label} />
         </div>

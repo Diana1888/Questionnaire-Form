@@ -2,7 +2,6 @@ import React from 'react';
 import content from '../content/content';
 
 const Stepper = ({ currentStep }) => {
-
   return (
     <div>
       <div className="steps-container">
