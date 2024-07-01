@@ -15,7 +15,10 @@ const StepFour = () => {
 
     setTimeout(() => {
       setIsSubmitting(false);
+    if (localStorage.getItem('formData')){
       setFormSent(true);
+    }
+
     }, 3000);
   };
 
