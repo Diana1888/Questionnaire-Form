@@ -78,8 +78,11 @@ export const FormProvider = ({ children }) => {
     dispatch({ type: 'SET_DATA', payload: { [name]: value } });
 
     if (name === 'contactName') {
+      const nameRegex = /^[a-zA-Z\s]*$/;
       if (value.trim() === '') {
         setNameError('Name is required');
+      } else if (!nameRegex.test(value.trim())) {
+        setNameError('Invalid name format');
       } else {
         setNameError('');
       }

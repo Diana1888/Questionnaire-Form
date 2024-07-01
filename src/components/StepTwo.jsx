@@ -5,7 +5,9 @@ import FormContext from '../context/FormContext';
 import content from '../content/content';
 
 const StepTwo = () => {
-  const { handleCheckbox, state } = useContext(FormContext);
+  const { handleCheckbox, state, nextStep } = useContext(FormContext);
+
+  const selectedService = state.services.some((service) => service.selected)
 
   return (
     <div className="form-steps">

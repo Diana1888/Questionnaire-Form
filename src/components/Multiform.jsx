@@ -9,14 +9,26 @@ import StepFour from './StepFour';
 import Button from './Button';
 
 const Multiform = () => {
-  const { state, nextStep, previousStep, nameError, emailError } = useContext(FormContext);
+  const { state, nextStep, previousStep, nameError, emailError } =
+    useContext(FormContext);
   const { currentStep, contactName, email } = state;
 
   const handleNextClick = useCallback(() => {
     nextStep();
   }, [nextStep]);
 
-  const isNextDisabled = contactName.trim() === '' || email.trim() === '' || nameError || emailError;
+  const selectedService = state.services.some((service) => service.selected);
+  const selectedBudget = state.budget.some((budget) => budget.selected);
+
+  const isNextDisabled =
+    currentStep === 2
+      ? !selectedService
+      : currentStep === 3
+      ? !selectedBudget
+      : contactName.trim() === '' ||
+        email.trim() === '' ||
+        nameError ||
+        emailError;
 
   const handlePreviousClick = useCallback(() => {
     previousStep();
