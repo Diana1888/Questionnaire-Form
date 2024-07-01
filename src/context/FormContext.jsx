@@ -52,13 +52,28 @@ export const FormProvider = ({ children }) => {
 
   const emailRegex = /^[\w.-]+@[\w.-]+\.[\w-]{2,4}$/;
 
+  const phoneNumber = (value) => {
+    const currentValue = value.replace(/[^\d]/g, '');
+    const cvLength = currentValue.length;
+
+    if (cvLength < 4) {
+      return currentValue;
+    }
+
+    if (cvLength < 7) {
+      return `(${currentValue.slice(0, 3)}) ${currentValue.slice(3)}`;
+    }
+    
+    return `(${currentValue.slice(0, 3)}) ${currentValue.slice(3,6)}-${currentValue.slice(6, 10)}`;
+  };
+
   const handleInput = (e) => {
     const { name, value } = e.target;
 
     if (name === 'phone') {
-      if (!/^\d*$/.test(value)) {
-        return;
-      }
+      const formattedPhoneNumber = phoneNumber(value);
+      dispatch({ type: 'SET_DATA', payload: { [name]: formattedPhoneNumber } });
+      return;
     }
 
     dispatch({ type: 'SET_DATA', payload: { [name]: value } });
